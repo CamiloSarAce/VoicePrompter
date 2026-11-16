@@ -1,0 +1,198 @@
+# Voice Prompter commands.
+#
+# `say`   = phrases (lowercase) that trigger the command. Longest phrase wins.
+# `type`  = symbol | xml | edit | modifier | literal | control
+# `space` = how a symbol attaches to its neighbours (symbols/xml only):
+#   standalone : space before and after      (word)
+#   closing    : no space before, space after (, . ; : ? ! ... ) ")
+#   opening    : space before, none after     ( [ open-quote)
+#   joining    : none before, none after      (/ -)
+#   raw        : whitespace, no extra spaces  (new line, tab)
+#
+# Say "literal <word>" to type a command word as plain text, e.g. "literal period".
+
+# ---------- Punctuation ----------
+
+[[command]]
+type = "symbol"
+say = ["comma"]
+text = ","
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["period", "dot", "full stop"]
+text = "."
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["colon"]
+text = ":"
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["semicolon", "semi colon"]
+text = ";"
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["ellipsis", "ellipses"]
+text = "..."
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["question mark"]
+text = "?"
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["exclamation mark", "exclamation point"]
+text = "!"
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["hyphen"]
+text = "-"
+space = "joining"
+
+[[command]]
+type = "symbol"
+say = ["dash"]
+text = "-"
+space = "standalone"
+
+[[command]]
+type = "symbol"
+say = ["slash"]
+text = "/"
+space = "joining"
+
+[[command]]
+type = "symbol"
+say = ["ampersand"]
+text = "&"
+space = "standalone"
+
+[[command]]
+type = "symbol"
+say = ["quote", "open quote"]
+text = "\""
+space = "opening"
+
+[[command]]
+type = "symbol"
+say = ["end quote", "close quote"]
+text = "\""
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["open parenthesis"]
+text = "("
+space = "opening"
+
+[[command]]
+type = "symbol"
+say = ["close parenthesis"]
+text = ")"
+space = "closing"
+
+[[command]]
+type = "symbol"
+say = ["open bracket"]
+text = "["
+space = "opening"
+
+[[command]]
+type = "symbol"
+say = ["close bracket"]
+text = "]"
+space = "closing"
+
+# ---------- Layout ----------
+
+[[command]]
+type = "symbol"
+say = ["new line", "newline"]
+text = "\n"
+space = "raw"
+
+[[command]]
+type = "symbol"
+say = ["new paragraph"]
+text = "\n\n"
+space = "raw"
+
+[[command]]
+type = "symbol"
+say = ["tab"]
+text = "\t"
+space = "raw"
+
+# ---------- XML tags: "XML tag start: Name" -> <Name> ----------
+# The tag name is the next word, case as spoken. Chain words with
+# "underscore" / "hyphen" / "dash": "user underscore name" -> user_name.
+
+[[command]]
+type = "xml"
+action = "start"
+say = ["xml tag start", "x m l tag start"]
+
+[[command]]
+type = "xml"
+action = "end"
+say = ["xml tag end", "x m l tag end"]
+
+[[command]]
+type = "xml"
+action = "empty"
+say = ["xml tag empty", "x m l tag empty"]
+
+# ---------- Editing ----------
+
+[[command]]
+type = "edit"
+action = "delete_word"
+say = ["delete last word"]
+
+[[command]]
+type = "edit"
+action = "scratch"
+say = ["scratch that"]
+
+[[command]]
+type = "modifier"
+action = "capitalize"
+say = ["capitalize next"]
+
+[[command]]
+type = "modifier"
+action = "allcaps"
+say = ["all caps next"]
+
+[[command]]
+type = "literal"
+say = ["literal"]
+
+# ---------- Control ----------
+
+[[command]]
+type = "control"
+action = "pause"
+say = ["pause listening"]
+
+[[command]]
+type = "control"
+action = "resume"
+say = ["resume listening"]
+
+[[command]]
+type = "control"
+action = "stop"
+say = ["stop listening"]

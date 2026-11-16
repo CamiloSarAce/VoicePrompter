@@ -1,0 +1,18 @@
+# Voice Prompter settings.
+
+hotkey = "ctrl+alt+v"          # toggles listening on/off (placeholder, decide later)
+newline_key = "shift+enter"    # key sent for "new line" (plain Enter would submit most chat boxes)
+
+# Whisper
+model = "small"                # tiny | base | small | medium | large-v3
+language = "en"
+device = "auto"                # auto | cpu | cuda
+compute_type = "int8"
+initial_prompt = "XML tag start, XML tag end, comma, period, colon, semicolon, ellipsis, new line, new paragraph, scratch that."
+
+# Parsing
+strip_auto_punctuation = true  # drop punctuation Whisper adds; only spoken commands insert it
+
+# Utterance detection
+energy_threshold = 0.01        # raise if background noise triggers it
+silence_seconds = 0.8          # pause length that ends an utterance
